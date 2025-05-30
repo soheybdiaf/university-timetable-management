@@ -1,6 +1,6 @@
 # Smart University Timetable Management Web App
 
-## 📌 Project Overview
+## Project Overview
 
 Managing university timetables has become increasingly complex with the growing number of students, programs, and academic resources. This project presents a smart, web-based solution designed to **automate** and **optimize** university scheduling processes, eliminating conflicts and ensuring fair resource distribution (professors, rooms, groups).
 
@@ -8,67 +8,59 @@ This application provides a seamless and intelligent interface for generating an
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
-* ⚡ **Fast & Responsive Interface**
+**Fast & Responsive Interface**
   Built with lightweight, modern front-end technologies to ensure smooth performance even on low-end devices.
 
-* 🔐 **Secure Authentication with JWT**
+**Secure Authentication with JWT**
   Token-based session management with auto-verification for each request based on user roles.
 
-* 🧠 **Smart Multi-Resource Booking System**
+**Smart Multi-Resource Booking System**
   Automatically checks availability of all required resources (professor, room, group) before booking. Prevents conflicts and partial reservations.
 
-* 🧪 **Role-Based Access Control (RBAC)**
+**Role-Based Access Control (RBAC)**
   Access to features and endpoints is granted based on user roles (Student, Professor, Admin).
 
-* 🧩 **Customized Dashboards**
+**Customized Dashboards**
 
-  * **Students** can view their group's timetable and personal details.
-  * **Professors** can view their schedule, courses, assigned groups, and submit preferences.
-  * **Admins** have full control over timetables, resources, reservations, user accounts, and permissions.
+* **Students** can view their group's timetable and personal details.
+* **Professors** can view their schedule, courses, assigned groups, and submit preferences.
+* **Admins** have full control over timetables, resources, reservations, user accounts, and permissions.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend:
 
-* **HTML, CSS, JavaScript**
-  For a clean, modern, and responsive UI.
+* **HTML, CSS, JavaScript** For a clean, modern, and responsive UI.
 
 ### Backend:
 
-* **Node.js + Express.js**
-  Powerful and scalable server-side architecture.
+* **Node.js + Express.js** Powerful and scalable server-side architecture.
 
-* **MySQL2 (Library)**
-  Efficient query execution and connection management.
+* **MySQL2 (Library)** Efficient query execution and connection management.
 
 ### Database:
 
-* **MySQL**
-  Secure and flexible relational data storage.
+* **MySQL** Secure and flexible relational data storage.
 
 ---
 
-## 🧠 Smart Scheduling Logic
+## Smart Scheduling Logic
 
-* 📅 **All-in-One Booking**
-  Each reservation includes professor, room, and group—ensuring all dependencies are accounted for.
+*  **All-in-One Booking** Each reservation includes professor, room, and group—ensuring all dependencies are accounted for.
 
-* 🛑 **Conflict Prevention**
-  The system automatically verifies time availability for each resource before confirming any booking.
+*  **Conflict Prevention** the system automatically verifies time availability for each resource before confirming any booking.
 
-* 🎯 **Dynamic Filtering**
-  Already-booked resources are dynamically excluded from selection lists.
+*  **Dynamic Filtering** Already-booked resources are dynamically excluded from selection lists.
 
-* ⛔ **No Partial Reservations**
-  A course cannot be scheduled without selecting all associated resources.
+*  **No Partial Reservations**  course cannot be scheduled without selecting all associated resources.
 
 ---
 
-## 🎯 Project Goals
+## Project Goals
 
 * Automate the creation of university timetables.
 * Reduce administrative workload and minimize human error.
@@ -96,14 +88,14 @@ This application provides a seamless and intelligent interface for generating an
 
    Create a file named .env in the root folder and add:
 
-    DB_HOST=localhost
-    DB_USER=root
-    DB_PASSWORD=
-    DB_NAME=cs_timetable
-    JWT_SECRET=your_jwt_secret
-    PORT=3006
-    JWT_SECRET_KEY = your_code
-    BASE_URL=http://localhost:4259
+    - DB_HOST=localhost
+    - DB_USER=root
+    - DB_PASSWORD=
+    - DB_NAME=cs_timetable
+    - JWT_SECRET=your_jwt_secret
+    - PORT=3006
+    - JWT_SECRET_KEY = your_code
+    - BASE_URL=http://localhost:4259
 
 3. **Import the database using phpMyAdmin**
 
