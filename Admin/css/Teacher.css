@@ -1,0 +1,77 @@
+.modal-box-2 {
+  width: 70%;
+  padding: 10px;
+}
+
+#forms_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  gap: 10px;
+}
+
+#forms_container form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px 0;
+}
+
+#forms_container form input:not(input[type='checkbox']),
+#forms_container form select {
+  width: 100px;
+  flex-grow: 1;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  outline-color: var(--success-color);
+  border: 1px solid #ced4da;
+  padding: 10px;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#forms_container form input:focus,
+#forms_container form select:focus {
+  transform: scale(1.03);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.checkbox_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  height: 90px;
+  width: 180px;
+  margin-left: 10px;
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius);
+  padding: 10px;
+  box-shadow: var(--shadow);
+}
+
+.checkbox_container span {
+  align-self: center;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .modal-box-2 {
+    width: 90%;
+  }
+}
+
+#buttons {
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

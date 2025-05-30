@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students - CS timeTable</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="icon" href="./calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="main">
+      <header class="title-info">
+        <div class="page-title">
+          <i class="fas fa-user-graduate"></i>
+          <h1>Students Management</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </header>
+
+      <button class="add_data">
+        <span class="Emojis"><i class="fas fa-plus"></i></span>
+        <span>Add Student</span>
+      </button>
+
+      <article class="modal-box">
+        <h2>Add New Student</h2>
+        <form class="form_create">
+          <div>
+            <label for="matricule">Matricule:</label>
+            <input type="number" id="matricule" name="matricule" required />
+          </div>
+
+          <div>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="nom_complet" required />
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              autocomplete="username"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="mot_passe"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="levels">Level:</label>
+            <select id="levels" name="nom_niveau" required>
+              <option value="">---------</option>
+              <option value="1">LICENCE 1</option>
+              <option value="2">LICENCE 2</option>
+              <option value="3">LICENCE 3</option>
+              <option value="4">MASTER 1</option>
+              <option value="5">MASTER 2</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="group">Groups:</label>
+            <select id="group" name="nom_groupe" required>
+              <option value="">------</option>
+            </select>
+          </div>
+
+          <input id="submit" type="submit" value="Submit" />
+        </form>
+        <button class="close_modal">Close</button>
+        <div id="message"></div>
+      </article>
+
+      <p id="message_delete"></p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#ID</th>
+              <th>Matricule</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Level</th>
+              <th>Group</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script type="module" src="./js/Students.js"></script>
+  </body>
+</html>

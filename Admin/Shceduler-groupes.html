@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Scheduler - CS timeTable</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/Timetable.css" />
+    <link rel="icon" href="./calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="scheduler-container">
+      <header class="scheduler-header">
+        <div class="page-title">
+          <i class="fas fa-calendar-alt"></i>
+          <h1>Group Scheduler</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="scheduler-content">
+        <div class="scheduler-form-card">
+          <div class="card-header">
+            <i class="fas fa-users"></i>
+            <h2>Display Group Schedule</h2>
+          </div>
+          <form id="scheduleForm" class="schedule-form">
+            <div class="form-group">
+              <label for="semester">Semester</label>
+              <select id="semester" name="semester_seance" required>
+                <option value="" disabled selected>Select semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="level">Level</label>
+              <select id="level" name="niveau_id" required>
+                <option value="" disabled selected>Select level</option>
+                <option value="1">L1</option>
+                <option value="2">L2</option>
+                <option value="3">L3</option>
+                <option value="4">M1</option>
+                <option value="4">M2</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="group">Group</label>
+              <select id="group" name="groupe_id" required>
+                <option value="" disabled selected>Select group</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-display">
+                <i class="fas fa-calendar-check"></i>Dsplay Schedule
+              </button>
+              <button type="reset" class="btn btn-reset">
+                <i class="fas fa-undo"></i>Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="recent-schedules">
+          <h3>Recent Schedules</h3>
+          <ul class="schedules-list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <div id="scheduleModal" class="schedule-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Group Schedule</h2>
+          <div class="schedule-metadata">
+            <span class="metadata-item"
+              ><i class="fas fa-layer-group"></i> <span id="scheduleLevel"></span
+            ></span>
+            <span class="metadata-item"
+              ><i class="fas fa-users"></i> <span id="scheduleGroup"></span
+            ></span>
+            <span class="metadata-item"
+              ><i class="fas fa-calendar-alt"></i> <span id="scheduleSemester"></span
+            ></span>
+          </div>
+          <button class="close-modal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="timetable-container">
+            <table class="timetable">
+              <thead>
+                <tr>
+                  <th class="time-header">Time / Day</th>
+                  <th>Saturday</th>
+                  <th>Sunday</th>
+                  <th>Monday</th>
+                  <th>Tuesday</th>
+                  <th>Wednesday</th>
+                  <th>Thursday</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-print-schedule">
+            <i class="fas fa-print"></i>Print Schedule
+          </button>
+          <button class="btn btn-close-modal"><i class="fas fa-times"></i>Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/scheduler-groupe.js"></script>
+  </body>
+</html>

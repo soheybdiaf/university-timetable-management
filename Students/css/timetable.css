@@ -1,0 +1,243 @@
+.schedule-modal {
+  display: none;
+  position: fixed;
+  z-index: 6;
+  padding: 10px 30px;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  overflow-y: auto;
+  animation: modalFadeIn 0.3s ease;
+  background-color: var(--bg-white);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 5px 15px;
+  color: var(--text-light);
+  background: linear-gradient(126deg, var(--card-schedule), var(--primary-color));
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.schedule-metadata {
+  display: flex;
+  gap: 25px;
+  font-size: 1.04rem;
+}
+
+.metadata-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.close-modal {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: var(--transition-speed);
+}
+
+.close-modal:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-body {
+  padding: 10px;
+  height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+@media (max-width: 930px) {
+  .modal-body {
+    height: calc(100vh - 165px);
+  }
+}
+
+@media (max-width: 672px) {
+  .modal-body {
+    height: calc(100vh - 200px);
+  }
+}
+
+@media (max-width: 626px) {
+  .modal-body {
+    height: calc(100vh - 225px);
+  }
+}
+
+.timetable-container {
+  overflow-x: auto;
+}
+
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+}
+
+.timetable th {
+  padding: 5px;
+  text-align: center;
+  font-weight: 500;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.timetable td {
+  padding: 2px;
+  border: 1px solid #e9ecef;
+}
+
+.time-slot {
+  background-color: #f8f9fa;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.cell-content {
+  position: relative;
+  background-color: #f0fdfa;
+  border-radius: var(--border-radius);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.schedule-cell.courses .cell-content {
+  background-color: var(--warning-color);
+}
+
+.schedule-cell.prt .cell-content {
+  background-color: #0aff0a;
+}
+
+.module-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.module-type {
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--primary-color);
+}
+
+.module-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.schedule-cell.courses .module-name {
+  color: #ae2564;
+}
+
+.schedule-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  gap: 5px;
+  color: var(--text-muted);
+}
+
+.schedule-details span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-print-schedule {
+  background-color: var(--card-schedule);
+  color: var(--text-light);
+}
+
+.btn-print-schedule:hover {
+  background-color: #3a7bd5;
+  transform: scale(1.05);
+}
+
+.btn-close-modal {
+  background-color: #e9ecef;
+  color: var(--text-dark);
+}
+
+.btn-close-modal:hover {
+  background-color: #dee2e6;
+  transform: scale(1.05);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .schedule-modal * {
+    visibility: visible;
+  }
+  .schedule-modal {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    padding: 0px;
+    width: 297mm;
+  }
+  .modal-body {
+    padding: 3px;
+    min-height: 210mm;
+  }
+  .menu,
+  .close-modal,
+  .modal-footer {
+    display: none;
+  }
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroms - CS timeTable</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="icon" href="/calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="main">
+      <article class="title-info">
+        <div class="page-title">
+          <i class="fas fa-school"></i>
+          <h1>Classroms management</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </article>
+      <button class="add_data">
+        <span class="Emojis">+</span>
+        <span>Add Classroms</span>
+      </button>
+      <article class="modal-box">
+        <h2>Add New Classroms</h2>
+        <form class="form_create">
+          <div>
+            <label for="Classroms_name">Classroms name:</label>
+            <input
+              type="text"
+              id="Classroms_name"
+              name="nom_salle"
+              placeholder="example: c1 Or c1,c2, ......"
+              required
+            />
+          </div>
+          <div>
+            <label for="Classroms_block">Classroms block:</label>
+            <input type="text" id="Classroms_block" name="bloc_salle" required />
+          </div>
+          <div>
+            <label for="Classroms_type">Classroms_type:</label>
+            <select id="Classroms_type" name="type_salle" required>
+              <option value="salle_tp">salle_tp</option>
+              <option value="salle_td">salle_td</option>
+              <option value="amphi">amphi</option>
+            </select>
+          </div>
+          <input id="submit" type="submit" value="submit" />
+        </form>
+        <button class="close_modal">Close</button>
+        <p id="message"></p>
+      </article>
+      <p id="message_delete"></p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#Id</th>
+              <th>Classroms name</th>
+              <th>Classroms block</th>
+              <th>Classroms type</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script type="module" src="./js/Classroms.js"></script>
+  </body>
+</html>

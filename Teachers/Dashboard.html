@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard - CS timeTable</title>
+    <link rel="stylesheet" href="./css/profile_info.css" />
+    <link rel="stylesheet" href="./css/profile_update.css" />
+    <link rel="stylesheet" href="./css/timetable.css" />
+    <link rel="icon" href="/calendar-week-solid.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="profile-container">
+      <header class="profile-header">
+        <div class="page-title">
+          <i class="fas fa-user-circle"></i>
+          <h1>Teacher Dashboard</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+          <div class="signOut">
+            <i class="fas fa-sign-out-alt menu-icon"></i>
+            <span>Sign Out</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="profile-card">
+        <div class="profile-info">
+          <div class="avatar-container">
+            <div class="avatar" id="profileAvatar">No image</div>
+          </div>
+
+          <div class="profile-details">
+            <h2 class="profile-name" id="teacherName"></h2>
+
+            <div class="detail-item">
+              <span class="detail-label">Email</span>
+              <span class="detail-value" id="teacherEmail"></span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">UserId</span>
+              <span class="detail-value" id="UserId"></span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">Matricule</span>
+              <span class="detail-value" id="Matricule"></span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">Department</span>
+              <span class="detail-value" id="Department"></span>
+            </div>
+
+            <button class="edit-btn" id="editProfileBtn">Edit Profile</button>
+
+            <div>
+              <h1 id="no_time" style="color: red"></h1>
+            </div>
+          </div>
+
+          <div class="teaching-summary">
+            <h3 class="summary-title">Teaching Summary</h3>
+            <table class="summary-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Semester 1</th>
+                  <th>Semester 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="row-label">Assigned Modules</td>
+                  <td id="teachingModulesS1"></td>
+                  <td id="teachingModulesS2"></td>
+                </tr>
+                <tr>
+                  <td class="row-label">Groups</td>
+                  <td id="teachingGroupsS1"></td>
+                  <td id="teachingGroupsS2"></td>
+                </tr>
+                <tr>
+                  <td class="row-label">Weekly Hours</td>
+                  <td id="teachingHoursS1"></td>
+                  <td id="teachingHoursS2"></td>
+                </tr>
+                <tr>
+                  <td class="row-label">Display Time Table</td>
+                  <td>
+                    <button data-semester="1" class="view-btn">View</button>
+                  </td>
+                  <td>
+                    <button data-semester="2" class="view-btn">View</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-edit">
+        <h2>Profile Update</h2>
+        <form id="formUpdate">
+          <div>
+            <input
+              type="text"
+              id="matricule"
+              name="matricule"
+              placeholder="Matricule *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="fullName"
+              name="nom_complet"
+              placeholder="Full Name *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              placeholder="Email *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="dprt"
+              name="departement"
+              autocomplete="departement"
+              placeholder="Departement *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              autocomplete="username"
+              placeholder="Username *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              id="current_password"
+              name="currentPass"
+              autocomplete="current-password"
+              placeholder="current Password: *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              id="new_password"
+              name="newPass"
+              placeholder="new Password"
+              autocomplete="new-password"
+            />
+          </div>
+          <div><input id="submit" type="submit" value="submit" /></div>
+        </form>
+        <button id="closeProfileEdit">Close</button>
+        <p id="message_updStatus"></p>
+      </section>
+
+      <section class="teaching-preferences">
+        <h2 class="section-title">Teaching Preferences</h2>
+
+        <div class="preference-section">
+          <h3>Desired Courses</h3>
+          <div class="courses-container">
+            <div class="course-tags" id="courseTags"></div>
+            <ul id="courses-list"></ul>
+            <input
+              type="text"
+              class="course-input"
+              id="courseInput"
+              placeholder="Enter a course"
+              autocomplete="off"
+            />
+            <div class="submitPreferences">
+              <button class="submit-btn" id="submitCoursesPreferences">
+                Submit Courses Preferences
+              </button>
+              <p id="ModulesPreferencesMsg"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="preference-section">
+          <h3>Preferred Teaching Times</h3>
+          <form class="timePreferences">
+            <div class="days">
+              <input type="checkbox" name="jours_preferes" value="Samedi" id="sat" />
+              <label for="sat"><i class="fas fa-calendar-day"></i>Saturday</label>
+              <input type="checkbox" name="jours_preferes" value="Dimanche" id="sun" />
+              <label for="sun"><i class="fas fa-calendar-day"></i>Sunday</label>
+              <input type="checkbox" name="jours_preferes" value="Lundi" id="mon" />
+              <label for="mon"><i class="fas fa-calendar-day"></i>Monday</label>
+              <input type="checkbox" name="jours_preferes" value="Mardi" id="tue" />
+              <label for="tue"><i class="fas fa-calendar-day"></i>Tuesday</label>
+              <input type="checkbox" name="jours_preferes" value="Mercredi" id="wed" />
+              <label for="wed"><i class="fas fa-calendar-day"></i>Wednesday</label>
+              <input type="checkbox" name="jours_preferes" value="Jeudi" id="thu" />
+              <label for="thu"><i class="fas fa-calendar-day"></i>Thursday</label>
+            </div>
+
+            <div class="periods">
+              <input
+                type="checkbox"
+                name="horaires_preferes"
+                value="08:00-09:30"
+                id="time1"
+              />
+              <label for="time1"><i class="fas fa-clock"></i>8:00 - 9:30</label>
+              <input
+                type="checkbox"
+                name="horaires_preferes"
+                value="09:45-11:15"
+                id="time2"
+              />
+              <label for="time2"><i class="fas fa-clock"></i>9:45 - 11:15</label>
+              <input
+                type="checkbox"
+                name="horaires_preferes"
+                value="11:30-13:00"
+                id="time3"
+              />
+              <label for="time3"><i class="fas fa-clock"></i>11:30 - 13:00</label>
+              <input
+                type="checkbox"
+                name="horaires_preferes"
+                value="14:00-15:30"
+                id="time4"
+              />
+              <label for="time4"><i class="fas fa-clock"></i>14:00 - 15:30</label>
+              <input
+                type="checkbox"
+                name="horaires_preferes"
+                value="15:45-17:15"
+                id="time5"
+              />
+              <label for="time5"><i class="fas fa-clock"></i>15:45 - 17:15</label>
+            </div>
+
+            <div class="submitPreferences">
+              <button class="submit-btn" id="saveTimesPreferences">
+                Save Times Preferences
+              </button>
+              <p id="TimesPreferencesMsg"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div id="scheduleModal" class="schedule-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">Teacher Schedule</h2>
+            <div class="schedule-metadata">
+              <span class="metadata-item"
+                ><i class="fas fa-calendar-alt"></i><span id="scheduleSemester"></span
+              ></span>
+              <span class="metadata-item"
+                ><i class="fas fa-user-tie"></i><span id="teacherFullName"></span
+              ></span>
+              <span class="metadata-item"
+                ><i class="fas fa-book"></i><span id="teacherDepartment"></span
+              ></span>
+            </div>
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+            <div class="timetable-container">
+              <table class="timetable">
+                <thead>
+                  <tr>
+                    <th class="time-header">Time / Day</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-print-schedule">
+              <i class="fas fa-print"></i>Print Schedule
+            </button>
+            <button class="btn btn-close-modal"><i class="fas fa-times"></i>Close</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./js/Teacher-Dashboard.js"></script>
+    <script src="./js/Profile-update.js"></script>
+    <script src="./js/Timetables.js"></script>
+  </body>
+</html>

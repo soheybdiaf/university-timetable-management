@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard - CS timeTable</title>
+    <link rel="stylesheet" href="./css/dashboard_student.css" />
+    <link rel="stylesheet" href="./css/profile_update.css" />
+    <link rel="stylesheet" href="./css/timetable.css" />
+    <link rel="stylesheet" href="./css/card.css" />
+    <link rel="icon" href="/calendar-week-solid.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="profile-container">
+      <header class="profile-header">
+        <div class="page-title">
+          <i class="fas fa-user-graduate"></i>
+          <h1>Student Dashboard</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+          <div class="signOut">
+            <i class="fas fa-sign-out-alt menu-icon"></i>
+            <span>Sign Out</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="profile-card">
+        <div class="profile-info">
+          <div class="avatar-container">
+            <div class="avatar" id="profileAvatar">No image</div>
+          </div>
+
+          <div class="profile-details">
+            <h2 class="profile-name" id="studentName"></h2>
+
+            <div class="detail-item">
+              <span class="detail-label">Email</span>
+              <span class="detail-value" id="studentEmail"></span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">UserId</span>
+              <span class="detail-value" id="UserId"></span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">Registration Number</span>
+              <span class="detail-value" id="RegNumber"></span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">Level</span>
+              <span class="detail-value" id="LevelName"></span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">Specialty</span>
+              <span class="detail-value" id="SpecialtyName"></span>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-label">Groupe</span>
+              <span class="detail-value" id="GroupName"></span>
+            </div>
+
+            <button class="edit-btn" id="editProfileBtn">Edit Profile</button>
+
+            <div>
+              <h1 id="no_time" style="color: red"></h1>
+            </div>
+          </div>
+
+          <div class="study-summary">
+            <h3 class="summary-title">Study Summary</h3>
+            <table class="summary-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Semester 1</th>
+                  <th>Semester 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="row-label">Teachers</td>
+                  <td><div id="TeachersGroupS1"></div></td>
+                  <td><div id="TeachersGroupS2"></div></td>
+                </tr>
+                <tr>
+                  <td class="row-label">Weekly Hours</td>
+                  <td id="studyHoursS1"></td>
+                  <td id="studyHoursS2"></td>
+                </tr>
+                <tr>
+                  <td class="row-label">Display Time Table</td>
+                  <td>
+                    <button data-semester="1" class="view-btn">View</button>
+                  </td>
+                  <td>
+                    <button data-semester="2" class="view-btn">View</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-edit">
+        <h2>Profile Update</h2>
+        <form id="formUpdate">
+          <div>
+            <input
+              type="text"
+              id="regNumber"
+              name="matricule"
+              placeholder="Registration Number *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="fullName"
+              name="nom_complet"
+              placeholder="Full Name *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              placeholder="Email *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              autocomplete="username"
+              placeholder="Username *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              id="current_password"
+              name="mot_passe"
+              autocomplete="current-password"
+              placeholder="Current Password *"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              id="new_password"
+              name="newPass"
+              placeholder="New Password"
+              autocomplete="new-password"
+            />
+          </div>
+          <div><input id="submit" type="submit" value="Submit" /></div>
+        </form>
+        <button id="closeProfileEdit">Close</button>
+        <p id="message_updStatus"></p>
+      </section>
+
+      <section class="courses-sections">
+        <div class="semester-courses" id="semester1Courses">
+          <h2 class="section-title">Semester 1 Courses</h2>
+          <div class="courses-container" id="CoursesCard1"></div>
+        </div>
+
+        <div class="semester-courses" id="semester2Courses">
+          <h2 class="section-title">Semester 2 Courses</h2>
+          <div class="courses-container" id="CoursesCard2"></div>
+        </div>
+      </section>
+
+      <div id="scheduleModal" class="schedule-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">Student Schedule</h2>
+            <div class="schedule-metadata">
+              <span class="metadata-item"
+                ><i class="fas fa-calendar-alt"></i><span id="scheduleSemester"></span
+              ></span>
+              <span class="metadata-item"
+                ><i class="fas fa-user-graduate"></i><span id="studentFullName"></span
+              ></span>
+              <span class="metadata-item"
+                ><i class="fas fa-users"></i><span id="studentSpeciality"></span
+              ></span>
+              <span class="metadata-item"
+                ><i class="fas fa-users"></i><span id="studentGroup"></span
+              ></span>
+            </div>
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+            <div class="timetable-container">
+              <table class="timetable">
+                <thead>
+                  <tr>
+                    <th class="time-header">Time / Day</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-print-schedule">
+              <i class="fas fa-print"></i>Print Schedule
+            </button>
+            <button class="btn btn-close-modal"><i class="fas fa-times"></i>Close</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./js/Student-Dashboard.js"></script>
+    <script src="./js/Timetables.js"></script>
+  </body>
+</html>

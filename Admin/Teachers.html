@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teachers - CS timeTable</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/Teacher.css" />
+    <link rel="icon" href="./calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="main">
+      <article class="title-info">
+        <div class="page-title">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h1>teachers management</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </article>
+      <div id="buttons">
+        <button class="assign_Subjects">
+          <span class="Emojis">+</span>
+          <span>Assign subjects</span>
+        </button>
+        <button class="add_data">
+          <span class="Emojis">+</span>
+          <span>Add Teacher</span>
+        </button>
+      </div>
+
+      <article class="modal-box">
+        <h2>Add New Teacher</h2>
+        <form class="form_create">
+          <div>
+            <label for="matricule">Matricule:</label>
+            <input type="text" id="matricule" name="matricule" required />
+          </div>
+          <div>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="nom_complet" required />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+          </div>
+          <div>
+            <label for="dprt">Departement:</label>
+            <input
+              type="text"
+              id="dprt"
+              name="departement"
+              autocomplete="departement"
+              required
+            />
+          </div>
+          <div>
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              autocomplete="username"
+              required
+            />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="mot_passe"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          <input id="submit" type="submit" value="submit" />
+        </form>
+        <button class="close_modal">Close</button>
+        <p id="message"></p>
+      </article>
+
+      <article class="modal-box-2">
+        <h2>Assign subjects to teachers</h2>
+        <h3 id="no_teacher_selected">No teacher selected</h3>
+        <div id="forms_container"></div>
+        <input id="submit_2" type="submit" value="submit" />
+        <p id="message-2"></p>
+        <button id="close_modal_2">Close</button>
+      </article>
+
+      <article class="modal-box-3">
+        <h2>subjects Assigned</h2>
+        <div
+          style="
+            scrollbar-color: #ccc transparent;
+            scrollbar-width: thin;
+            height: auto;
+            overflow: auto;
+          "
+        >
+          <table>
+            <thead>
+              <tr>
+                <th style="background-color: #388964; color: #ececec">Subject name</th>
+                <th style="background-color: #388964; color: #ececec">Subject Type</th>
+                <th style="background-color: #388964; color: #ececec">Level</th>
+                <th style="background-color: #388964; color: #ececec">Delete</th>
+              </tr>
+            </thead>
+            <tbody id="box_subjects_assigned"></tbody>
+          </table>
+        </div>
+        <button id="close_modal_3">Close</button>
+      </article>
+
+      <p id="message_delete"></p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>#Id</th>
+              <th>Matricule</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Subject Preferences</th>
+              <th>Subjects Assigned</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script type="module" src="./js/Teachers.js"></script>
+    <script src="./js/Teachers_Subjects.js"></script>
+    <script src="./js/Teashers_Info.js"></script>
+  </body>
+</html>

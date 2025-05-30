@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #4361ee;
+  --hover-color: #3a0ca3;
+  --success-color: #2dc653;
+  --danger-color: #f72585;
+  --text-light: #f8f9fa;
+  --text-dark: #212529;
+  --text-muted: #6c757d;
+  --bg-dark: #151928;
+  --bg-darker: #0f1321;
+  --bg-white: #ffffff;
+  --border-radius: 13px;
+  --card-radius: 16px;
+  --transition-speed: 0.3s;
+  --card-teachers: #4361ee;
+  --card-students: #3a0ca3;
+  --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background: linear-gradient(126deg, var(--bg-dark), var(--bg-darker));
+}
+
+.container {
+  height: calc(100vh - 10px);
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.header {
+  text-align: center;
+  color: var(--text-light);
+}
+
+.header h1 {
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  animation: anTabBtn 0.5s ease forwards;
+}
+
+.register-tabs {
+  flex-direction: column;
+}
+
+.tab-btn,
+.form-btn {
+  padding: 13px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.23);
+  color: var(--text-light);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed);
+}
+
+.tab-btn.active {
+  background-color: var(--primary-color);
+}
+
+.form-btn.active {
+  background-color: #0ca36a;
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tabs-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.form-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  min-width: 295px;
+  padding: 10px 25px;
+  animation: anforms 0.5s ease forwards;
+  background-color: var(--bg-white);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+#login-container.active,
+#student-container.active,
+#teacher-container.active {
+  display: flex;
+}
+
+#login-container {
+  border-top: 7px solid var(--primary-color);
+}
+
+#student-container {
+  border-top: 7px solid var(--card-students);
+}
+
+#teacher-container {
+  border-top: 7px solid var(--card-teachers);
+}
+
+.form-header {
+  text-align: center;
+}
+
+.form-header h2 {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+}
+
+.form-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.login-form,
+.student-form,
+.teacher-form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.form-control {
+  width: 100%;
+  padding: 4px 12px 4px 40px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed);
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+  border-color: var(--primary-color);
+}
+
+.form-control::placeholder {
+  color: #b0b0b0;
+}
+
+.login-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 25px;
+  background-color: #b0b0b0;
+  border-radius: var(--border-radius);
+}
+
+.login-message p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bg-darker);
+}
+
+.login-message p span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--bg-darker);
+}
+
+.login-message p span.success {
+  color: green;
+}
+
+.login-message p span.failed {
+  color: red;
+}
+
+#studentRegistreMsg,
+#teacherRegistreMsg {
+  padding: 5px;
+  text-align: center;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+}
+
+#studentRegistreMsg.success,
+#teacherRegistreMsg.success {
+  background-color: rgba(45, 198, 83, 0.2);
+  color: var(--success-color);
+}
+
+#studentRegistreMsg.error,
+#teacherRegistreMsg.error {
+  background-color: rgba(247, 37, 133, 0.2);
+  color: var(--danger-color);
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  color: white;
+  font-size: 0.94rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 5px;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  text-align: center;
+  transition: all var(--transition-speed);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+  background-color: var(--hover-color);
+}
+
+.btn-student {
+  background-color: var(--card-students);
+}
+
+.btn-teacher {
+  background-color: var(--card-teachers);
+}
+
+.btn-student:hover {
+  background-color: #2e0c82;
+}
+
+.btn-teacher:hover {
+  background-color: #3050d0;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+@keyframes anforms {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes anTabBtn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teachers Scheduler - CS timeTable</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/Timetable.css" />
+    <link rel="stylesheet" href="./css/teachers-timetable.css" />
+    <link rel="icon" href="./calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="scheduler-container">
+      <header class="scheduler-header">
+        <div class="page-title">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h1>Teacher Scheduler</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="scheduler-content">
+        <div class="scheduler-form-card">
+          <div class="card-header header-teacher">
+            <i class="fas fa-user-tie menu-icon"></i>
+            <h2>Find Teacher Schedule</h2>
+          </div>
+          <form id="teacherScheduleForm" class="schedule-form">
+            <div class="form-group">
+              <label for="semester">Semester</label>
+              <select id="semester" name="semester_seance" required>
+                <option value="" disabled selected>Select semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="level">Academic Level</label>
+              <select id="level" name="level" required>
+                <option value="" disabled selected>Select level</option>
+                <option value="1">Licence 1</option>
+                <option value="2">Licence 2</option>
+                <option value="3">Licence 3</option>
+                <option value="4">Master 1</option>
+                <option value="5">Master 2</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="module">Module</label>
+              <select id="module" name="module" required>
+                <option value="" disabled selected>Select module</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="teacher">Teacher</label>
+              <select id="teacher" name="teacher" required>
+                <option value="" disabled selected>Select teacher</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-display">
+                <i class="fa-solid fa-search"></i>Get Teacher Info
+              </button>
+              <button type="reset" class="btn btn-reset">
+                <i class="fas fa-undo"></i>Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="teacher-information">
+          <div class="profile-header">
+            <h3>Teacher Information</h3>
+          </div>
+
+          <div class="profile-content">
+            <div class="teacher-info-empty">
+              <i class="fas fa-user-tie fa-5x"></i>
+              <h3>No teacher selected</h3>
+              <p>Please select a teacher from the form to display their information</p>
+            </div>
+
+            <div class="teacher-info-card hidden">
+              <div class="teacher-header">
+                <div class="teacher-avatar">
+                  <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="teacher-basic-info">
+                  <h3 id="teacherName"></h3>
+                  <span id="teacherDepartement"></span>
+                </div>
+              </div>
+
+              <div class="info-section">
+                <div class="section-title">
+                  <i class="fas fa-book"></i>
+                  <h4>Teaching Modules</h4>
+                </div>
+                <ul id="teachingModules" class="module-list"></ul>
+              </div>
+
+              <div class="info-section">
+                <div class="section-title">
+                  <i class="fas fa-chart-line"></i>
+                  <h4>Teaching Statistics</h4>
+                </div>
+                <div class="stats-container">
+                  <div class="stat-card">
+                    <div class="stat-value" id="teachingHours"></div>
+                    <div class="stat-label">Weekly Hours</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-value" id="moduleCount"></div>
+                    <div class="stat-label">Modules</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-value" id="groupCount"></div>
+                    <div class="stat-label">Groups</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn-display btn-teacher-timetable">
+                  <i class="fas fa-calendar-check"></i>
+                  Display Timetable
+                </button>
+                <button type="reset" class="btn btn-reset close-teacher-info">
+                  <i class="fas fa-undo"></i>Clear List
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="scheduleModal" class="schedule-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Teacher Schedule</h2>
+          <div class="schedule-metadata">
+            <span class="metadata-item"
+              ><i class="fas fa-calendar-alt"></i><span id="scheduleSemester"></span
+            ></span>
+            <span class="metadata-item"
+              ><i class="fas fa-user-tie"></i><span id="teacherFullName"></span
+            ></span>
+            <span class="metadata-item"
+              ><i class="fas fa-book"></i><span id="teacherDepartment"></span
+            ></span>
+          </div>
+          <button class="close-modal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="timetable-container">
+            <table class="timetable">
+              <thead>
+                <tr>
+                  <th class="time-header">Time / Day</th>
+                  <th>Saturday</th>
+                  <th>Sunday</th>
+                  <th>Monday</th>
+                  <th>Tuesday</th>
+                  <th>Wednesday</th>
+                  <th>Thursday</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-print-schedule">
+            <i class="fas fa-print"></i>Print Schedule
+          </button>
+          <button class="btn btn-close-modal"><i class="fas fa-times"></i>Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/scheduler-teachers.js"></script>
+  </body>
+</html>

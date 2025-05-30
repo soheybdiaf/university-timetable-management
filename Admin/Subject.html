@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subject - CS timeTable</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="icon" href="./calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="main">
+      <article class="title-info">
+        <div class="page-title">
+          <i class="fas fa-book"></i>
+          <h1>Subjects management</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </article>
+      <button class="add_data">
+        <span class="Emojis">+</span>
+        <span>Add Subject</span>
+      </button>
+      <article class="modal-box">
+        <h2>New Subject</h2>
+        <form class="form_create">
+          <div>
+            <label for="Subject_name">Subject name:</label>
+            <input type="text" id="Subject_name" name="nom_module" required />
+          </div>
+          <div>
+            <label for="Semestre">Semestre:</label>
+            <select id="Semestre" name="semester_module" required>
+              <option value="">---------</option>
+              <option value="1">Semestre 1</option>
+              <option value="2">Semestre 2</option>
+            </select>
+          </div>
+          <div>
+            <label for="Level">Level:</label>
+            <select id="Level" name="niveau_module" required>
+              <option value="">---------</option>
+              <option value="1">LICENCE 1</option>
+              <option value="2">LICENCE 2</option>
+              <option value="3">LICENCE 3</option>
+              <option value="4">MASTER 1</option>
+              <option value="5">MASTER 2</option>
+            </select>
+          </div>
+          <div>
+            <label for="speciality">speciality:</label>
+            <select id="speciality" name="specialite_module" required>
+              <option value="">---------</option>
+              <option value="1">Sys informatique</option>
+              <option value="2">GADM</option>
+              <option value="3">IATI</option>
+              <option value="4">ILC</option>
+              <option value="5">RSI</option>
+              <option value="6">SEM</option>
+              <option value="7">SID</option>
+            </select>
+          </div>
+          <div>
+            <label for="supervised_work">supervised work:</label>
+            <select id="supervised_work" name="nombre_td" required>
+              <option value="">Number of sessions per week</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="pratical_work">pratical work:</label>
+            <select id="pratical_work" name="nombre_tp" required>
+              <option value="">Number of sessions per week</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="courses">courses:</label>
+            <select id="courses" name="nombre_cours" required>
+              <option value="">Number of sessions per week</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <input id="submit" type="submit" value="submit" />
+        </form>
+        <button class="close_modal">Close</button>
+        <p id="message"></p>
+      </article>
+      <p id="message_delete"></p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#Id</th>
+              <th>Subject name</th>
+              <th>Semestre</th>
+              <th>Level</th>
+              <th>speciality</th>
+              <th>supervised work</th>
+              <th>pratical work</th>
+              <th>courses</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script type="module" src="./js/Subject.js"></script>
+  </body>
+</html>

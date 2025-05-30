@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - CS timeTable</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/Dashboard.css" />
+    <link rel="icon" href="/calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="dashboard">
+      <header class="dashboard-header">
+        <div class="page-title">
+          <i class="fas fa-tachometer-alt"></i>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="stat-cards">
+        <div class="stat-card teachers">
+          <div class="card-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Teachers</h3>
+            <span class="card-value" id="nbrTeach"></span>
+          </div>
+        </div>
+
+        <div class="stat-card students">
+          <div class="card-icon">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Students</h3>
+            <span class="card-value" id="nbrEtu"></span>
+          </div>
+        </div>
+
+        <div class="stat-card levels">
+          <div class="card-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Levels</h3>
+            <span class="card-value" id="nbrLev"></span>
+          </div>
+        </div>
+
+        <div class="stat-card groups">
+          <div class="card-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Groups</h3>
+            <span class="card-value" id="nbrGro"></span>
+          </div>
+        </div>
+      </section>
+
+      <header class="section-header">
+        <div class="section-title">
+          <i class="fas fa-chart-bar"></i>
+          <h2>Statistics</h2>
+        </div>
+      </header>
+
+      <section class="stat-scheduler">
+        <div class="chart-container">
+          <div class="control-container">
+            <div class="control-group">
+              <label for="levelSelect">Level:</label>
+              <select id="levelSelect">
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="semesterSelect">Semester:</label>
+              <select id="semesterSelect">
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
+          </div>
+          <canvas id="ChartGroupes"></canvas>
+        </div>
+
+        <div class="chart-container">
+          <div class="control-container">
+            <div class="control-group">
+              <label for="enseignantSelect">Teacher:</label>
+              <select id="enseignantSelect">
+                <option value="">Select Teacher</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="semesterSelectEns">Semester:</label>
+              <select id="semesterSelectEns">
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
+          </div>
+          <canvas id="ChartEnseignant"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/Dashboard.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"
+      integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/Chart_Groupes.js"></script>
+    <script src="./js/Chart_Teachers.js"></script>
+  </body>
+</html>

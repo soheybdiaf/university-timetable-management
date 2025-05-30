@@ -1,0 +1,131 @@
+.course-card {
+  background: linear-gradient(145deg, #fff, #f0f2f5);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(67, 98, 238, 0.34);
+  transition: all 0.3s ease;
+  border-top: 5px solid var(--primary-color);
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 47, 255, 0.41);
+}
+
+.course-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--hover-color);
+  margin-bottom: 12px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.course-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70px;
+  height: 4px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--hover-color));
+}
+
+.course-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.course-type {
+  padding: 12px 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.course-type:hover {
+  transform: translateX(5px);
+}
+
+.course-type-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-type-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.97rem;
+}
+
+.course-hours {
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.course-type.lecture {
+  border-left: 4px solid var(--danger-color);
+}
+
+.course-type.lecture .course-type-name {
+  color: var(--danger-color);
+}
+
+.course-type.lecture .course-hours {
+  background: linear-gradient(45deg, var(--danger-color), #ff3d80);
+}
+
+.course-type.tutorial {
+  border-left: 4px solid var(--primary-color);
+}
+
+.course-type.tutorial .course-type-name {
+  color: var(--primary-color);
+}
+
+.course-type.tutorial .course-hours {
+  background: linear-gradient(45deg, var(--primary-color), #6c8aff);
+}
+
+.course-type.practical {
+  border-left: 4px solid var(--success-color);
+}
+
+.course-type.practical .course-type-name {
+  color: var(--success-color);
+}
+
+.course-type.practical .course-hours {
+  background: linear-gradient(45deg, var(--success-color), #4ae781);
+}
+
+.total-hours {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 2px dashed rgba(108, 117, 125, 0.2);
+  font-weight: 700;
+  color: var(--hover-color);
+}
+
+.total-hours-value {
+  padding: 5px 15px;
+  border-radius: 20px;
+  background-color: var(--hover-color);
+  color: white;
+  font-size: 0.95rem;
+  box-shadow: 0 3px 10px rgba(58, 12, 163, 0.3);
+}

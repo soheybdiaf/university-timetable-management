@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rooms Scheduler - CS timeTable</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/Timetable.css" />
+    <link rel="icon" href="./calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="scheduler-container">
+      <header class="scheduler-header">
+        <div class="page-title">
+          <i class="fas fa-calendar-alt"></i>
+          <h1>Room Scheduler</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="scheduler-content">
+        <div class="scheduler-form-card">
+          <div class="card-header header-room">
+            <i class="fas fa-door-open menu-icon"></i>
+            <h2>Display Room Schedule</h2>
+          </div>
+          <form id="scheduleForm" class="schedule-form">
+            <div class="form-group">
+              <label for="semester">Semester</label>
+              <select id="semester" name="semester_seance" required>
+                <option value="" disabled selected>Select semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="RoomBloc">Room Bloc</label>
+              <select id="RoomBloc" name="bloc_salle" required>
+                <option value="" disabled selected>Select bloc</option>
+                <option value="Block_AG">bloc Ag</option>
+                <option value="Block_J">bloc J</option>
+                <option value="DEPARETEMENT">Departement informatique</option>
+                <option value="MIAS">Departement Mi</option>
+                <option value="amphi">Amphi</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="RoomType">Room Type</label>
+              <select id="RoomType" name="type_salle" required>
+                <option value="" disabled selected>Select Type</option>
+                <option value="salle_tp">pratical work</option>
+                <option value="salle_td">supervised work</option>
+                <option value="amphi">Courses</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-display">
+                <i class="fa-brands fa-searchengin"></i>Get Rooms
+              </button>
+              <button type="reset" class="btn btn-reset">
+                <i class="fas fa-undo"></i>Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="recent-schedules recent-room">
+          <h3>Rooms List</h3>
+          <div class="Rooms-list"><h1>Empty List</h1></div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-display btn-room-timetable">
+              <i class="fas fa-calendar-check"></i>Display Room timetable
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="scheduleModal" class="schedule-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Room Schedule</h2>
+          <div class="schedule-metadata">
+            <span class="metadata-item"
+              ><i class="fas fa-calendar-alt"></i><span id="scheduleSemester"></span
+            ></span>
+            <span class="metadata-item"
+              ><i class="fas fa-door-open"></i><span id="roomName"></span
+            ></span>
+            <span class="metadata-item"
+              ><i class="fas fa-book"></i><span id="Type"></span
+            ></span>
+            <span class="metadata-item"
+              ><i class="fas fa-school"></i><span id="Bloc"></span
+            ></span>
+          </div>
+          <button class="close-modal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="timetable-container">
+            <table class="timetable">
+              <thead>
+                <tr>
+                  <th class="time-header">Time / Day</th>
+                  <th>Saturday</th>
+                  <th>Sunday</th>
+                  <th>Monday</th>
+                  <th>Tuesday</th>
+                  <th>Wednesday</th>
+                  <th>Thursday</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-print-schedule">
+            <i class="fas fa-print"></i>Print Schedule
+          </button>
+          <button class="btn btn-close-modal"><i class="fas fa-times"></i>Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/scheduler-rooms.js"></script>
+  </body>
+</html>

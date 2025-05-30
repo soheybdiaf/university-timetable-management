@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access Portal - CS timeTable</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Access_Portal.css" />
+    <link rel="icon" href="/calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="header">
+        <div class="header">
+          <h1>CS timeTable</h1>
+          <p>Manage your academic schedule efficiently</p>
+        </div>
+
+        <div class="tabs">
+          <button id="login" class="tab-btn active">Login</button>
+          <button id="register" class="tab-btn">Register</button>
+        </div>
+      </div>
+
+      <div class="tabs-content">
+        <div class="tab-content active" id="login-tab">
+          <div id="login-container" class="form-container active">
+            <div class="form-header">
+              <h2>Welcome Back</h2>
+              <p>Sign in to access your account</p>
+            </div>
+
+            <form class="login-form active">
+              <div class="form-group">
+                <label for="login-email">Email</label>
+                <div class="input-group">
+                  <i class="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    id="login-email"
+                    class="form-control"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <div class="input-group">
+                  <i class="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    id="login-password"
+                    class="form-control"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="user-role">Role</label>
+                <div class="input-group">
+                  <i class="fas fa-user-tag"></i>
+                  <select id="user-role" class="form-control" name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="admin">Administrator</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Student">Student</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="login-message">
+                <p id="login-statut">
+                  Login Statut :
+                  <span class="login-statut-message">Not logged in</span>
+                </p>
+              </div>
+
+              <button type="submit" class="btn">Sign In</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="tab-content" id="register-tab">
+          <div class="tabs register-tabs">
+            <button
+              id="register-student"
+              class="form-btn active"
+              data-form="student-container"
+            >
+              As Student
+            </button>
+            <button id="teacher-student" class="form-btn" data-form="teacher-container">
+              As teacher
+            </button>
+          </div>
+
+          <div id="student-container" class="form-container active">
+            <div class="form-header">
+              <h2>Student Registration</h2>
+              <p id="studentRegistreMsg"></p>
+            </div>
+
+            <form class="student-form">
+              <div class="form-group">
+                <label for="student-name">Full Name</label>
+                <div class="input-group">
+                  <i class="fas fa-user"></i>
+                  <input
+                    type="text"
+                    id="student-name"
+                    class="form-control"
+                    placeholder="Enter your full name"
+                    name="nom_complet"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="student-email">Username</label>
+                <div class="input-group">
+                  <i class="fa-solid fa-circle-user"></i>
+                  <input
+                    type="text"
+                    id="student-username"
+                    class="form-control"
+                    placeholder="Enter your username"
+                    name="username"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="student-email">Email</label>
+                <div class="input-group">
+                  <i class="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    id="student-email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    name="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="student-id">Student ID</label>
+                <div class="input-group">
+                  <i class="fas fa-id-card"></i>
+                  <input
+                    type="text"
+                    id="student-id"
+                    class="form-control"
+                    placeholder="Enter your student ID"
+                    name="matricule"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="student-level">Levels</label>
+                <div class="input-group">
+                  <i class="fa-solid fa-layer-group"></i>
+                  <select class="form-control" id="student-levels" required>
+                    <option value="">---------</option>
+                    <option value="1">LICENCE 1</option>
+                    <option value="2">LICENCE 2</option>
+                    <option value="3">LICENCE 3</option>
+                    <option value="4">MASTER 1</option>
+                    <option value="5">MASTER 2</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="student-password">Groupe</label>
+                <div class="input-group">
+                  <i class="fa-solid fa-people-group"></i>
+                  <select
+                    class="form-control"
+                    id="student-groupe"
+                    name="group_id"
+                    required
+                  ></select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="student-password">Password</label>
+                <div class="input-group">
+                  <i class="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    id="student-password"
+                    class="form-control"
+                    name="mot_passe"
+                    placeholder="Create a password"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-student">Register as Student</button>
+            </form>
+          </div>
+
+          <div id="teacher-container" class="form-container">
+            <div class="form-header">
+              <h2>Teacher Registration</h2>
+              <p id="teacherRegistreMsg"></p>
+            </div>
+
+            <form class="teacher-form">
+              <div class="form-group">
+                <label for="teacher-id">Teacher ID</label>
+                <div class="input-group">
+                  <i class="fas fa-id-card"></i>
+                  <input
+                    type="number"
+                    id="teacher-id"
+                    name="matricule"
+                    class="form-control"
+                    placeholder="Enter your teacher ID"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="teacher-name">Full Name</label>
+                <div class="input-group">
+                  <i class="fas fa-user"></i>
+                  <input
+                    type="text"
+                    id="teacher-name"
+                    name="nom_complet"
+                    class="form-control"
+                    placeholder="Enter your full name *"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="teacher-department">Department</label>
+                <div class="input-group">
+                  <i class="fas fa-building"></i>
+                  <input
+                    type="text"
+                    id="teacher-department"
+                    name="departement"
+                    class="form-control"
+                    placeholder="Enter your department *"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="teacher-email">Email</label>
+                <div class="input-group">
+                  <i class="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    id="teacher-email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Enter your email *"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="teacher-username">Username</label>
+                <div class="input-group">
+                  <i class="fa-solid fa-circle-user"></i>
+                  <input
+                    type="text"
+                    id="teacher-username"
+                    name="username"
+                    class="form-control"
+                    placeholder="Chose a Username *"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="teacher-password">Password</label>
+                <div class="input-group">
+                  <i class="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    id="teacher-password"
+                    name="mot_passe"
+                    class="form-control"
+                    placeholder="Create a password"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-teacher">Register as Teacher</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="./Access_Portal.js"></script>
+</html>

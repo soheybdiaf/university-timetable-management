@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS Timetable - Scheduler</title>
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/scheduler.css" />
+    <link rel="icon" href="./calendar-week-solid.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <aside class="menu"></aside>
+
+    <main class="main">
+      <article class="title-info">
+        <div class="page-title">
+          <i class="fas fa-clock"></i>
+          <h1>Scheduler Management</h1>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <h3 class="username"></h3>
+            <span class="user-role"></span>
+          </div>
+        </div>
+      </article>
+
+      <section class="scheduler-container">
+        <article class="box_new card-container">
+          <h2 class="card-title">New Schedule</h2>
+          <form id="form_shceduler">
+            <div class="form-group">
+              <label for="Semestre">Semester</label>
+              <select name="semester_seance" id="Semestre" required>
+                <option value="">---------</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="subject_type">Subject Type</label>
+              <select name="type_seance" id="subject_type" required>
+                <option value="">---------</option>
+                <option value="supervised_work">Supervised Work</option>
+                <option value="pratical_work">Practical Work</option>
+                <option value="courses">Courses</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="Level">Level</label>
+              <select name="niveau_id" id="Level" required>
+                <option value="">---------</option>
+                <option value="1">LICENCE 1</option>
+                <option value="2">LICENCE 2</option>
+                <option value="3">LICENCE 3</option>
+                <option value="4">MASTER 1</option>
+                <option value="5">MASTER 2</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="groupe">Group</label>
+              <select name="groupe_id" id="groupe"></select>
+            </div>
+            <div class="buttons">
+              <button type="button" id="clearBtn" class="btn-secondary">
+                <i class="fas fa-redo"></i> Reset
+              </button>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-arrow-right"></i> Next
+              </button>
+            </div>
+          </form>
+        </article>
+
+        <article class="box_submit card-container">
+          <h2 class="card-title"></h2>
+          <div id="form_container">
+            <div class="success-message">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="84"
+                height="84"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="green"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <p class="success-text">Booking successfully completed!</p>
+            </div>
+            <div class="alert-box">
+              <div class="alert-icon"><i class="fa-solid fa-bell"></i></div>
+              <div class="alert-message">
+                Subjects should be assigned to teachers first.
+              </div>
+              <a class="alert-link" href="/Teachers.html">Go to the required link</a>
+            </div>
+          </div>
+          <div class="buttons">
+            <button type="button" class="closeBtn btn-danger">
+              <i class="fas fa-times"></i> Close
+            </button>
+            <button type="button" id="submit_shceduler" class="btn-primary">
+              <i class="fas fa-check"></i> Submit
+            </button>
+          </div>
+        </article>
+
+        <article class="box_checkAvailable card-container">
+          <div id="info" class="info-container">
+            <div class="info-section">
+              <h3><i class="fas fa-user-tie"></i> Teacher Information</h3>
+              <div class="info-content">
+                <h4>Id: <span id="teacherId">-</span></h4>
+                <h4>Name: <span id="teacherName">-</span></h4>
+                <h4>Departement: <span id="Departement">Not reserved</span></h4>
+                <h4>
+                  Preferred Module:
+                  <span id="preferenceModule">Not reserved</span>
+                </h4>
+                <h4>Preferred Days: <span id="preferenceDay">Not reserved</span></h4>
+                <h4>
+                  Preferred Times:
+                  <span id="preferenceTimes">Not reserved</span>
+                </h4>
+                <h4>
+                  scheduler Reserved:
+                  <span id="schedulerReserved">Not reserved</span>
+                </h4>
+              </div>
+            </div>
+            <div class="info-section">
+              <h3><i class="fas fa-book"></i> Subject Information</h3>
+              <div class="info-content">
+                <h4>Id: <span id="sebjectId">-</span></h4>
+                <h4>Name: <span id="sebjectName">-</span></h4>
+                <h4>Seance Type: <span id="seanceType">-</span></h4>
+                <h4>Speciality: <span id="Speciality">-</span></h4>
+                <h4>Semester: <span id="semesterModule">-</span></h4>
+                <h4>weeklyhoraires: <span id="weeklyhoraires">-</span></h4>
+              </div>
+            </div>
+            <div class="info-section">
+              <h3><i class="fas fa-clipboard-check"></i> Availability Status</h3>
+              <span class="status" id="Status">-</span>
+              <button type="button" class="BtncheckRooms btn-info">
+                <i class="fas fa-search"></i> Check Rooms
+              </button>
+              <button type="button" id="displayAvailable" class="btn-primary">
+                <i class="fas fa-clock"></i> Show Available Times
+              </button>
+            </div>
+            <div id="rooms" class="rooms-container"></div>
+          </div>
+
+          <form id="times" class="schedule-form">
+            <div class="form-section">
+              <h3><i class="fas fa-calendar-day"></i> Select Day</h3>
+              <div class="days">
+                <input
+                  type="radio"
+                  data-day-name="Saturday"
+                  name="jour_id"
+                  value="1"
+                  id="sat"
+                />
+                <label for="sat"><i class="fas fa-calendar-day"></i> Saturday</label>
+                <input
+                  type="radio"
+                  data-day-name="Sunday"
+                  name="jour_id"
+                  value="2"
+                  id="sun"
+                />
+                <label for="sun"><i class="fas fa-calendar-day"></i> Sunday</label>
+                <input
+                  type="radio"
+                  data-day-name="Monday"
+                  name="jour_id"
+                  value="3"
+                  id="mon"
+                />
+                <label for="mon"><i class="fas fa-calendar-day"></i> Monday</label>
+                <input
+                  type="radio"
+                  data-day-name="Tuesday"
+                  name="jour_id"
+                  value="4"
+                  id="tue"
+                />
+                <label for="tue"><i class="fas fa-calendar-day"></i> Tuesday</label>
+                <input
+                  type="radio"
+                  data-day-name="Wednesday"
+                  name="jour_id"
+                  value="5"
+                  id="wed"
+                />
+                <label for="wed"><i class="fas fa-calendar-day"></i> Wednesday</label>
+                <input
+                  type="radio"
+                  data-day-name="Thursday"
+                  name="jour_id"
+                  value="6"
+                  id="thu"
+                />
+                <label for="thu"><i class="fas fa-calendar-day"></i> Thursday</label>
+              </div>
+            </div>
+            <div class="form-section">
+              <h3><i class="fas fa-clock"></i> Select Time Period</h3>
+              <div class="periods">
+                <input
+                  type="radio"
+                  data-time-zone="8:00 - 9.30"
+                  name="horaire_id"
+                  value="1"
+                  id="time1"
+                />
+                <label for="time1"><i class="fas fa-clock"></i> 8:00 - 9:30</label>
+                <input
+                  type="radio"
+                  data-time-zone="09.45 - 11.15"
+                  name="horaire_id"
+                  value="2"
+                  id="time2"
+                />
+                <label for="time2"><i class="fas fa-clock"></i> 9:45 - 11:15</label>
+                <input
+                  type="radio"
+                  data-time-zone="11.30 - 13.00"
+                  name="horaire_id"
+                  value="3"
+                  id="time3"
+                />
+                <label for="time3"><i class="fas fa-clock"></i> 11:30 - 13:00</label>
+                <input
+                  type="radio"
+                  data-time-zone="14:00 - 15.30"
+                  name="horaire_id"
+                  value="4"
+                  id="time4"
+                />
+                <label for="time4"><i class="fas fa-clock"></i> 14:00 - 15:30</label>
+                <input
+                  type="radio"
+                  data-time-zone="15.45 - 17.15"
+                  name="horaire_id"
+                  value="5"
+                  id="time5"
+                />
+                <label for="time5"><i class="fas fa-clock"></i> 15:45 - 17:15</label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="online online-box">
+                <input type="checkbox" id="online_courses" name="online" />
+                <label for="online_courses"
+                  ><i class="fas fa-laptop"></i> Online Session</label
+                >
+              </div>
+            </div>
+          </form>
+
+          <article id="modal-av" class="availability-modal">
+            <div class="modal-header">
+              <h3><i class="fas fa-calendar-check"></i> Available Times</h3>
+              <h3>Available Rooms: <span id="CountRooms">NaN</span></h3>
+            </div>
+            <div class="wrapper table-wrapper">
+              <table class="availability-table">
+                <thead>
+                  <tr>
+                    <th>Time / Day</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                  </tr>
+                </thead>
+                <tbody id="scheduleTable"></tbody>
+              </table>
+            </div>
+            <div class="buttons">
+              <button type="button" class="closeBtn btn-danger">
+                <i class="fas fa-times"></i> Close
+              </button>
+            </div>
+          </article>
+
+          <div class="buttons action-buttons">
+            <button type="button" id="isAvailable" class="btn-primary">
+              <i class="fas fa-check-circle"></i> Check Availability
+            </button>
+            <button type="button" class="closeBtn btn-danger">
+              <i class="fas fa-times"></i> Close
+            </button>
+            <button type="button" id="submitRoom" class="btn-success">
+              <i class="fas fa-save"></i> Submit
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="/profile.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/shceduler.js"></script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+.profile-edit {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 98vh;
+  padding: 10px 20px;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  box-shadow: var(--hover-shadow);
+  background-color: var(--bg-white);
+  border-radius: var(--card-radius);
+  transition:
+    opacity var(--transition-speed),
+    transform var(--transition-speed);
+}
+
+.profile-edit.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.profile-edit h2 {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.profile-edit h2::after {
+  position: absolute;
+  content: '';
+  width: 140px;
+  height: 4px;
+  bottom: -5px;
+  left: 0;
+  border-radius: 2px;
+  background-color: var(--primary-color);
+}
+
+#formUpdate {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+}
+
+#formUpdate div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#formUpdate label {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+#formUpdate input {
+  padding: 5px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all var(--transition-speed);
+}
+
+#formUpdate input:focus {
+  outline: none;
+  transform: scale(1.03);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.25);
+  border-color: var(--primary-color);
+}
+
+#formUpdate input[type='submit'] {
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  margin-top: 15px;
+  background-color: var(--primary-color);
+  transition: background-color var(--transition-speed);
+}
+
+#formUpdate input[type='submit']:hover {
+  transform: translateY(-2px);
+  background-color: var(--hover-color);
+}
+
+#closeProfileEdit {
+  padding: 8px 15px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  background-color: var(--text-muted);
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed);
+}
+
+#closeProfileEdit:hover {
+  background-color: #495057;
+}
+
+#ModulesPreferencesMsg,
+#TimesPreferencesMsg,
+#message_updStatus {
+  padding: 5px;
+  text-align: center;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+}
+
+#ModulesPreferencesMsg.success,
+#TimesPreferencesMsg.success,
+#message_updStatus.success {
+  background-color: rgba(45, 198, 83, 0.2);
+  color: var(--success-color);
+}
+
+#ModulesPreferencesMsg.error,
+#TimesPreferencesMsg.error,
+#message_updStatus.error {
+  background-color: rgba(247, 37, 133, 0.2);
+  color: var(--danger-color);
+}
+
+@media (min-width: 768px) {
+  #formUpdate {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
