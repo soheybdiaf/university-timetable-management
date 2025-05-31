@@ -98,7 +98,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     scheduleSemesterElement.textContent = `Semester ${semester}`;
     const QeuryParams = `Semester=${semester}&Level=${levelSelect.value}&Groupe=${groupSelect.value}`;
     const Rows = await Fetch_Data(`${BaseUrl}/get_groupe_scheduler?${QeuryParams}`);
-    if (!Rows.length) return;
+    if (!Rows.length) {
+      alert(Rows.message);
+      return;
+    };
     CreateTimeTable(Rows);
     openModal();
     addToLocalStorage(Rows, semester, level, group, new Date());
