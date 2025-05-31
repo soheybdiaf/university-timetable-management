@@ -109,7 +109,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     const Rows = await fetch(
       `${baseURl}/get_room_scheduler?Semester=${semester}&RoomId=${RoomId}`,
     ).then((res) => res.json());
-    if (!Rows.length) return;
+    if (!Rows.length) {
+      alert(Rows.message);
+      return;
+    };
     CreateRoomTimeTable(Rows);
     openModal();
   }
