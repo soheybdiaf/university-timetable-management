@@ -20,7 +20,7 @@ const GroupeScheduler = async (Demande, Reponse) => {
     if (GroupTimetable.length) return Reponse.status(200).json(GroupTimetable);
     else
       return Reponse.status(400).json({
-        message: 'Group Timetable not exists',
+        message: 'No timing of this group has been booked',
       });
   } catch (Erreur) {
     Reponse.status(500).json({ message: `${Erreur}` });
@@ -62,7 +62,7 @@ const RoomScheduler = async (Demande, Reponse) => {
     const [RoomTimetable] = await Cs_Shceduler.execute(SqlTimeRoom, [Semester, RoomId]);
 
     if (RoomTimetable.length) return Reponse.status(200).json(RoomTimetable);
-    else return Reponse.status(400).json({ message: 'Room Timetable not exists' });
+    else return Reponse.status(400).json({ message: 'No timing of this room has been booked' });
   } catch (Erreur) {
     Reponse.status(500).json({ message: `${Erreur}` });
   }
@@ -136,7 +136,7 @@ const GetTeacherScheduler = async (Demande, Reponse) => {
     ]);
 
     if (teacherTimetable.length) return Reponse.status(200).json(teacherTimetable);
-    else return Reponse.status(400).json({ message: 'No timing packed yet' });
+    else return Reponse.status(400).json({ message: 'No timing of this teacher has been booked' });
   } catch (Erreur) {
     Reponse.status(500).json({ message: `${Erreur}` });
   }
