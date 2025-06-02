@@ -340,4 +340,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     .forEach((btn) =>
       btn.addEventListener('click', () => toggleBox(btn.closest('article'), false)),
     );
+  await updateGroups();
 });
