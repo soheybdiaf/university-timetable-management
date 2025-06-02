@@ -84,7 +84,7 @@ const CHECK_AVAILABLE_SHCEDULER = async (Demande, Reponse) => {
       horaire_id,
     ]);
 
-    if (  ( !IS_TEACHER_BOOKED.length && !IS_LEVEL_BOOKED.length ) || ( !IS_TEACHER_BOOKED && !IS_GROUPE_BOOKED )  ){
+    if ((!IS_TEACHER_BOOKED.length && !IS_LEVEL_BOOKED.length && !groupe_id) || (!IS_TEACHER_BOOKED.length && !IS_GROUPE_BOOKED.length )){
       return Reponse.status(200).json({
         isSuccess: true,
         message: `Available`,
