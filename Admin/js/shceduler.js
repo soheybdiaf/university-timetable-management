@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (show) return;
     if (box.querySelector('#modal-av')) {
       [elements.Status, elements.roomsAvailable].forEach((el) => (el.textContent = ''));
-      [elements.checkBtnAvailable, elements.BtncheckRooms].forEach((btn) =>
+      [elements.checkBtnAvailable, elements.BtncheckRooms, elements.isOnline.parentNode].forEach((btn) =>
         btn.classList.toggle('show', false),
       );
       elements.formTimes
