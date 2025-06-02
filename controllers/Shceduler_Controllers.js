@@ -56,44 +56,40 @@ const CHECK_AVAILABLE_SHCEDULER = async (Demande, Reponse) => {
     const { semester, enseignant_id, horaire_id, jour_id, niveau_id, groupe_id } =
       JSON.parse(Demande.query.obj);
 
-    const SQL_GET_TEACHER = `SELECT 1 FROM seance WHERE semester_seance=? AND enseignant_id=? AND jour_id=? AND horaire_id=?`;
+    const SQL_IS_TEACHER_BOOKED = `SELECT 1 FROM seance WHERE semester_seance=? AND enseignant_id=? AND jour_id=? AND horaire_id=?`;
 
-    const SQL_GET_LEVEL = `SELECT 2 FROM seance
-                         WHERE semester_seance=? AND niveau_id=? AND groupe_id IS null AND jour_id=? AND horaire_id=?`;
+    const SQL_IS_LEVEL_BOOKED = `SELECT 2 FROM seance WHERE semester_seance=? AND niveau_id=? AND jour_id=? AND horaire_id=?`;
 
-    const SQL_GET_GROUPE = `SELECT 3 FROM seance 
-                          WHERE semester_seance=? AND groupe_id ${groupe_id ? `= ${groupe_id}` : 'IS NULL'} AND jour_id=? AND horaire_id=?`;
+    const SQL_IS_GROUPE_BOOKED = `SELECT 3 FROM seance WHERE semester_seance=? AND (groupe_id=? OR (niveau_id=? AND groupe_id IS NULL)) AND jour_id=? AND horaire_id=?;`;
 
-    const [IS_TEACHER_AVAILABLE] = await Cs_Shceduler.execute(SQL_GET_TEACHER, [
+    const [IS_TEACHER_BOOKED] = await Cs_Shceduler.execute(SQL_IS_TEACHER_BOOKED, [
       semester,
       enseignant_id,
       jour_id,
       horaire_id,
     ]);
 
-    const [IS_LEVEL_AVAILABLE] = await Cs_Shceduler.execute(SQL_GET_LEVEL, [
+    const [IS_LEVEL_BOOKED] = await Cs_Shceduler.execute(SQL_IS_LEVEL_BOOKED, [
       semester,
       niveau_id,
       jour_id,
       horaire_id,
     ]);
 
-    const [IS_GROUPE_AVAILABLE] = await Cs_Shceduler.execute(SQL_GET_GROUPE, [
+    const [IS_GROUPE_BOOKED] = await Cs_Shceduler.execute(SQL_IS_GROUPE_BOOKED, [
       semester,
+      groupe_id,
+      niveau_id,
       jour_id,
       horaire_id,
     ]);
 
-    if (
-      (!groupe_id || !IS_GROUPE_AVAILABLE.length) &&
-      !IS_TEACHER_AVAILABLE.length &&
-      !IS_LEVEL_AVAILABLE.length
-    )
+    if (  ( !IS_TEACHER_BOOKED.length && !IS_LEVEL_BOOKED.length ) || ( !IS_TEACHER_BOOKED && !IS_GROUPE_BOOKED )  ){
       return Reponse.status(200).json({
         isSuccess: true,
         message: `Available`,
       });
-    else
+    } else
       return Reponse.status(400).json({
         isSuccess: false,
         message: `Not Available`,
